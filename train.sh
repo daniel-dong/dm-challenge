@@ -34,7 +34,7 @@ for ITER_NUMBER in {0..4}; do
 	mkdir -p $TRAIN_METADATA_DIRECTORY
 	mkdir -p $LMDB_DIRECTORY
 	mkdir -p $TRAIN_IMAGES_DIRECTORY
-	#mkdir -p $VAL_IMAGES_DIRECTORY
+	mkdir -p $VAL_IMAGES_DIRECTORY
 
 	echo "Splitting the challenge training set into training and validation sets"
 	python generate_train_val_sets.py $EXAMS_METADATA_FILENAME \
@@ -47,11 +47,6 @@ for ITER_NUMBER in {0..4}; do
 	python generate_image_labels.py $TRAIN_METADATA_DIRECTORY/exams_metadata_train.tsv \
 		$TRAIN_METADATA_DIRECTORY/images_crosswalk_train.tsv \
 		$TRAIN_METADATA_DIRECTORY/image_labels_tmp.txt
-
-#	echo "Generating temporary labels"
-#	python generate_image_labels.py $EXAMS_METADATA_FILENAME \
-#		$IMAGES_CROSSWALK_FILENAME \
-#		$TRAIN_METADATA_DIRECTORY/image_labels_tmp.txt
 
 	echo "Undersampling negative training images"
 	python undersample_neg_images.py $TRAIN_METADATA_DIRECTORY/exams_metadata_train.tsv \
