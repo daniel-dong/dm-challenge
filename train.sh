@@ -60,13 +60,6 @@ for ITER_NUMBER in {0..4}; do
 		$TRAIN_METADATA_DIRECTORY \
         ${RANDOM_SEED[ITER_NUMBER]}
 
-#	echo "Undersampling negative training images"
-#	python undersample_neg_images.py $EXAMS_METADATA_FILENAME \
-#		$IMAGES_CROSSWALK_FILENAME \
-#		$TRAIN_METADATA_DIRECTORY/image_labels_tmp.txt \
-#		$TRAIN_METADATA_DIRECTORY \
-#		${RANDOM_SEED[ITER_NUMBER]}
-
 	echo "Extract train patches"
 	python extract_patches.py $TRAIN_METADATA_DIRECTORY/exams_metadata_train_UNDER.tsv \
 		$TRAIN_METADATA_DIRECTORY/images_crosswalk_train_UNDER.tsv \
